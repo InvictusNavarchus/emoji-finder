@@ -3,3 +3,4 @@ _site/
 .ruby-version
 *.map
 node_modules/
+dist/
