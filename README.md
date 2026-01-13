@@ -1,3 +1,15 @@
+A Fork of [emoji-finder](https://github.com/muan/emoji-finder).
+
+This is a website I use almost every day. Unfortunately, it seems the original repo is no longer maintained as the last commit was 3 years ago as of this writing.
+
+So I decided to clone it and continue the development.
+
+I didn't use the fork feature because Github only allows 1 fork per repo, and I'm planning to create PRs to suggest improvement to the original repo that I will make in this repo.
+
+Big thanks to @muan for creating this.
+
+<details>
+<summary>Click to see Original README</summary>
 ## Emoji finder [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat)](https://github.com/feross/standard)
 
 :heart: me some emoji. Go to https://emoji.muan.co/
@@ -18,3 +30,4 @@ View emoji in groups and food-attack hungry people
 **As of 2015/07/10, the emoji keyword library has been migrated to its own repository [muan/emojilib](https://github.com/muan/emojilib).**
 
 There are almost 900 emoji, more keywords let you find emoji more easily. Go to [`emojis.json`](https://github.com/muan/emojilib/blob/master/emojis.json) for the list of emoji & keywords.
+</details>
