@@ -10,6 +10,7 @@ Big thanks to @muan for creating this.
 
 <details>
 <summary>Click to see Original README</summary>
+
 ## Emoji finder [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat)](https://github.com/feross/standard)
 
 :heart: me some emoji. Go to https://emoji.muan.co/
