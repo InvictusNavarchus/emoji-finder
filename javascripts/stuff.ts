@@ -1,6 +1,7 @@
+import { emojiData } from './emoji-data.js'
+
 const searchField = document.querySelector('.input-search') as HTMLInputElement | null
 const container = document.querySelector('.emojis-container') as HTMLElement | null
-const url = '//unpkg.com/emojilib@^4.0.0'
 
 document.addEventListener('click', function (evt: MouseEvent) {
   const emoji = (evt.target as HTMLElement)?.closest('.js-emoji')
@@ -38,14 +39,14 @@ document.addEventListener('keydown', (event: KeyboardEvent) => {
   }
 })
 
-fetch(url).then(data => data.json()).then((json: Record<string, string>) => {
-  let html = ''
-  for (const emoji in json) {
-    html += `<li class="result emoji-wrapper js-emoji" title="${json[emoji]}">
-      <div class="js-emoji-char native-emoji" data-emoji="${emoji}" >${emoji}</div></li>`
-  }
-  if (container) container.innerHTML = html
-  const loading = document.querySelector('.loading')
-  if (loading) loading.remove()
-  document.dispatchEvent(new CustomEvent('emoji:ready'))
-})
+// Use pre-fetched emoji data instead of runtime fetch
+let html = ''
+for (const emoji in emojiData) {
+  html += `<li class="result emoji-wrapper js-emoji" title="${emojiData[emoji]}">
+    <div class="js-emoji-char native-emoji" data-emoji="${emoji}" >${emoji}</div></li>`
+}
+if (container) container.innerHTML = html
+const loading = document.querySelector('.loading')
+if (loading) loading.remove()
+document.dispatchEvent(new CustomEvent('emoji:ready'))
+

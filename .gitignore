@@ -4,3 +4,6 @@ _site/
 *.map
 node_modules/
 dist/
+
+# Auto-generated emoji data
+javascripts/emoji-data.ts
