@@ -7,3 +7,4 @@ dist/
 
 # Auto-generated emoji data
 src/data/emoji-data.json
+src/data/emoji-html.html

@@ -1,4 +1,5 @@
-import { defineConfig } from 'vite';
+import { defineConfig } from 'vite'
+import { injectEmojisPlugin } from './vite-plugin-inject-emojis'
 
 export default defineConfig({
   root: 'src',
@@ -7,4 +8,6 @@ export default defineConfig({
     outDir: '../dist',
     emptyOutDir: true,
   },
-});
+  plugins: [injectEmojisPlugin()],
+})
+
