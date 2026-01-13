@@ -13,18 +13,11 @@
     <link rel="search" type="application/opensearchdescription+xml" href="/opensearch.xml" title="Emoji searcher" />
     <title>Emoji searcher</title>
     <link rel="apple-touch-icon-precomposed" sizes="64x64" href="/appicon.png">
-    <link href="stylesheets/style.css" rel="stylesheet">
-    <script>
-      if(location.hostname === "muan.co") {
-        location.href = "https://emoji.muan.co/" + location.hash
-      }
-    </script>
+    <link href="styles/style.css" rel="stylesheet">
   </head>
 
   <body>
     <header class="site-header">
-      <button type="button" class="button pull-right js-twemoji">Twemoji</button>
-      <button type="button" class="button pull-right js-remove-twemoji">Remove Twemoji</button>
       <input type="search" class="input-search speedy-filter" placeholder="Search" autofocus aria-label="Search emoji">
       <a href="#" class="button js-clear-search clear-search">❌</a>
       <a href="#cats" class="mojigroup button">
@@ -69,10 +62,9 @@
 
     <footer class="site-footer">
       <a href="https://twitter.com/muanchiou" target="_blank">@muanchiou</a> |
-      <a href="https://github.com/muan/emoji/" target="_blank">Site source</a> |
+      <a href="https://github.com/InvictusNavarchus/emoji-finder/" target="_blank">Site source</a> |
       <a href="https://github.com/muan/emojilib" target="_blank">Data source</a>
     </footer>
-    <script type="text/javascript" src="javascripts/stuff.js"></script>
-    <script type="text/javascript" src="javascripts/search.js"></script>
+    <script type="module" src="lib/main.ts"></script>
   </body>
 </html>
