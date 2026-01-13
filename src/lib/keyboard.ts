@@ -21,10 +21,20 @@ function focusSearchInput(): void {
  * Handle keyboard shortcuts
  */
 function handleKeydown(event: KeyboardEvent): void {
-  // "/" key focuses the search input
-  if (event.key === '/') {
-    event.preventDefault()
-    focusSearchInput()
+  const searchInput = getSearchInput()
+  if (!searchInput) return
+
+  // Don't interfere if search input is already focused
+  if (document.activeElement === searchInput) return
+
+  // Don't interfere with special keys or modifier keys
+  if (event.ctrlKey || event.metaKey || event.altKey) return
+
+  // Check if the pressed key is a single alphabetical letter
+  if (event.key.length === 1 && /^[a-zA-Z]$/.test(event.key)) {
+    // Focus the search input and let the letter be typed naturally
+    // Don't prevent default - we want the letter to appear in the input
+    searchInput.focus()
   }
 }
 
