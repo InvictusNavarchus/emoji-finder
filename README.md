@@ -1,4 +1,4 @@
-A Fork of [emoji-finder](https://github.com/muan/emoji-finder).
+A Fork of [emoji](https://github.com/muan/emoji) by @muan.
 
 This is a website I use almost every day. Unfortunately, it seems the original repo is no longer maintained as the last commit was 3 years ago as of this writing.
 
