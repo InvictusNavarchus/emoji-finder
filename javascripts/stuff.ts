@@ -3,7 +3,7 @@ import { emojiData } from './emoji-data.js'
 const searchField = document.querySelector('.input-search') as HTMLInputElement | null
 const container = document.querySelector('.emojis-container') as HTMLElement | null
 
-document.addEventListener('click', function (evt: MouseEvent) {
+document.addEventListener('click', async function (evt: MouseEvent) {
   const emoji = (evt.target as HTMLElement)?.closest('.js-emoji')
   if (emoji) {
     getSelection()?.removeAllRanges()
@@ -11,7 +11,11 @@ document.addEventListener('click', function (evt: MouseEvent) {
     const node = emoji.querySelector('.js-emoji-char') as HTMLElement
     range.selectNodeContents(node)
     getSelection()?.addRange(range)
-    document.execCommand('copy')
+    try {
+      await navigator.clipboard.writeText(node.textContent || '')
+    } catch (err) {
+      console.error('Failed to copy emoji:', err)
+    }
     alertCopied(node.getAttribute('data-emoji') || '')
   }
 })
