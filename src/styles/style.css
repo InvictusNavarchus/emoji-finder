@@ -149,6 +149,10 @@ ul {
   width: auto;
   padding: 8px;
   position: relative;
+  
+  /* Performance optimization: skip rendering off-screen emojis */
+  content-visibility: auto;
+  contain-intrinsic-size: 50px;
 }
 
 ul, li {
