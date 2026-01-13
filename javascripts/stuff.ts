@@ -3,7 +3,7 @@ declare const twemoji: any
 
 const searchField = document.querySelector('.input-search') as HTMLInputElement | null
 const container = document.querySelector('.emojis-container') as HTMLElement | null
-const url = '//unpkg.com/emojilib@^3.0.0'
+const url = '//unpkg.com/emojilib@^4.0.0'
 
 document.addEventListener('click', function (evt: MouseEvent) {
   const emoji = (evt.target as HTMLElement)?.closest('.js-emoji')
