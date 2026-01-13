@@ -2,9 +2,9 @@ A Fork of [emoji](https://github.com/muan/emoji) by @muan.
 
 This is a website I use almost every day. Unfortunately, it seems the original repo is no longer maintained as the last commit was 3 years ago as of this writing.
 
-So I decided to clone it and continue the development.
+So I decided to clone it and continue the development. Most changes center around refactoring the codebase, but the most prominent change is the massive improvement of the initial loading time by prefetching the emoji at build time.
 
-I didn't use the fork feature because Github only allows 1 fork per repo, and I'm planning to create PRs to suggest improvement to the original repo that I will make in this repo.
+I didn't use the fork feature because Github only allows 1 fork per repo, and I'm planning to create PRs to suggest improvement to the original repo that I have made in this repo.
 
 Big thanks to @muan for creating this.
 
