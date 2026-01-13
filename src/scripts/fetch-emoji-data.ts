@@ -1,18 +1,14 @@
 /**
- * Build script: Fetches emoji data and generates build artifacts
+ * Build script: Fetches emoji data from emojilib and generates a JSON file
  * 
- * Generates:
- * 1. emoji-data.json - For runtime search/filtering
- * 2. emoji-html.html - Pre-rendered HTML for compile-time injection
- * 
- * This eliminates runtime rendering while maintaining full interactivity.
+ * This script runs during build time (prebuild) to avoid runtime network requests.
+ * The generated file is gitignored as it's a build artifact.
  */
 
 import { resolve } from 'node:path'
 
 const EMOJI_LIB_URL = 'https://unpkg.com/emojilib@^4.0.0'
-const DATA_OUTPUT_PATH = resolve(import.meta.dirname, '../data/emoji-data.json')
-const HTML_OUTPUT_PATH = resolve(import.meta.dirname, '../data/emoji-html.html')
+const OUTPUT_PATH = resolve(import.meta.dirname, '../data/emoji-data.json')
 
 type RawEmojiData = Record<string, string[] | string>
 type ProcessedEmojiData = Record<string, string>
@@ -42,19 +38,6 @@ function processEmojiData(rawData: RawEmojiData): ProcessedEmojiData {
 }
 
 /**
- * Generate pre-rendered HTML from emoji data
- */
-function generateEmojiHTML(emojiData: ProcessedEmojiData): string {
-  return Object.entries(emojiData)
-    .map(([emoji, keywords]) => 
-      `<li class="result emoji-wrapper js-emoji" title="${keywords}">
-    <div class="js-emoji-char native-emoji" data-emoji="${emoji}">${emoji}</div>
-  </li>`
-    )
-    .join('\n  ')
-}
-
-/**
  * Main function: orchestrates the data fetching and file generation
  */
 async function main(): Promise<void> {
@@ -63,18 +46,11 @@ async function main(): Promise<void> {
   try {
     const rawData = await fetchRawData()
     const processedData = processEmojiData(rawData)
-    const html = generateEmojiHTML(processedData)
 
-    // Generate JSON for runtime search/filtering
-    await Bun.write(DATA_OUTPUT_PATH, JSON.stringify(processedData, null, 2))
-    
-    // Generate pre-rendered HTML for build-time injection
-    await Bun.write(HTML_OUTPUT_PATH, html)
+    await Bun.write(OUTPUT_PATH, JSON.stringify(processedData, null, 2))
 
-    const count = Object.keys(processedData).length
-    console.log(`✓ Fetched ${count} emojis`)
-    console.log(`✓ Generated ${DATA_OUTPUT_PATH}`)
-    console.log(`✓ Generated ${HTML_OUTPUT_PATH}`)
+    console.log(`✓ Fetched ${Object.keys(processedData).length} emojis`)
+    console.log(`✓ Generated ${OUTPUT_PATH}`)
   } catch (error) {
     console.error('Error generating emoji data:', error)
     process.exit(1)

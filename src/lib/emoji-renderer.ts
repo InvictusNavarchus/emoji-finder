@@ -1,8 +1,5 @@
 /**
  * Emoji rendering and initialization
- * 
- * In production builds, emojis are pre-rendered at compile-time.
- * This module handles the fallback for development mode.
  */
 import type { EmojiData } from './types.js'
 import { Selectors, Events } from './types.js'
@@ -18,7 +15,7 @@ function createEmojiHTML(emoji: string, keywords: string): string {
 }
 
 /**
- * Render all emojis to the container (fallback for dev mode)
+ * Render all emojis to the container
  */
 export function renderEmojis(emojiData: EmojiData): void {
   const container = getEmojiContainer()
@@ -33,20 +30,9 @@ export function renderEmojis(emojiData: EmojiData): void {
 
 /**
  * Initialize the emoji display
- * Skips rendering if emojis are already pre-rendered at build time
  */
 export function initializeEmojis(emojiData: EmojiData): void {
-  const container = getEmojiContainer()
-  
-  // Check if emojis are already pre-rendered (compile-time injection)
-  const isPreRendered = container?.children.length ?? 0 > 0
-  
-  if (!isPreRendered) {
-    // Fallback: render at runtime (development mode)
-    renderEmojis(emojiData)
-  }
-  
+  renderEmojis(emojiData)
   removeElement(Selectors.loading)
   dispatchCustomEvent(Events.emojiReady)
 }
-
