@@ -4,7 +4,7 @@
  * This file wires together all the modules, following the composition root pattern.
  * Each module is responsible for a single concern and is initialized here.
  */
-import { emojiData } from './emoji-data.js'
+import emojiData from '../data/emoji-data.json'
 import { initializeEmojis } from './emoji-renderer.js'
 import { initEmojiClickHandler } from './emoji-click-handler.js'
 import { initKeyboardShortcuts } from './keyboard.js'

@@ -5,7 +5,7 @@
   "private": true,
   "scripts": {
     "dev": "vite",
-    "prebuild": "bun run scripts/fetch-emoji-data.ts",
+    "prebuild": "bun run src/scripts/fetch-emoji-data.ts",
     "build": "vite build",
     "preview": "vite preview",
     "type-check": "tsc --noEmit"

@@ -6,4 +6,4 @@ node_modules/
 dist/
 
 # Auto-generated emoji data
-javascripts/emoji-data.ts
+src/data/emoji-data.json
