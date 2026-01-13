@@ -6,17 +6,15 @@ const container = document.querySelector('.emojis-container') as HTMLElement | n
 document.addEventListener('click', async function (evt: MouseEvent) {
   const emoji = (evt.target as HTMLElement)?.closest('.js-emoji')
   if (emoji) {
-    getSelection()?.removeAllRanges()
-    const range = document.createRange()
     const node = emoji.querySelector('.js-emoji-char') as HTMLElement
-    range.selectNodeContents(node)
-    getSelection()?.addRange(range)
+    const emojiChar = node.getAttribute('data-emoji') || node.textContent || ''
+    
     try {
-      await navigator.clipboard.writeText(node.textContent || '')
+      await navigator.clipboard.writeText(emojiChar)
+      alertCopied(emojiChar)
     } catch (err) {
       console.error('Failed to copy emoji:', err)
     }
-    alertCopied(node.getAttribute('data-emoji') || '')
   }
 })
 
